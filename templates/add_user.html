@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% block main_content %}
+
+<h1>User List:</h1>
+<form method="POST">
+    {{form.hidden_tag()}}
+
+    {{form.name.label(class="form-label")}}
+    {{form.name(class="form-control")}}
+    <br/>
+
+    {{form.email.label(class="form-label")}}
+    {{form.email(class="form-control")}}
+    <br/>
+
+    {{form.submit(class="btn btn-secondary")}}
+
+
+</form>
+
+{% for our_user in our_users %}
+    {{ our_user.id }} - {{ our_user.name }} - {{ our_user.email }}
+{% endfor%}
+
+{% endblock %}
+
+
