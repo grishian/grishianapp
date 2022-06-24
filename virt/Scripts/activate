@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\grish\Documents\eigen_programmeer_projecten\grishianapp\virt"
+VIRTUAL_ENV="C:\Users\grish\Documents\eigen_programmeer_projecten\grishianapp1\virt"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
