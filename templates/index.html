@@ -13,9 +13,17 @@
             crossorigin="anonymous"></script>
 </head>
 
+<style>
+    body {
+        background-color: #e9eef2;
+    }
+
+</style>
+
+
 <body>
 {% block navbar%}
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs bg-light">
     <li class="nav-item">
         <a class="nav-link" href="{{url_for('index')}}">Home</a>
     </li>
@@ -24,10 +32,13 @@
     </li>
 </ul>
 {% endblock %}
+<div class="shadow p-3 my-5 bg-body rounded container">
 
-<div class="container">
     {% block main_content %}
     <h1>Home</h1>
+    <p>
+        Welkom enzo.
+    </p>
     {% endblock %}
 </div>
 
