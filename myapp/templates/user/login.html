@@ -1,30 +1,23 @@
 {% extends 'index.html' %}
 
 {% block main_content %}
+<h1>Login</h1>
 
-<h1>Register</h1>
-
-<form method="post" name="register">
+<form method="post" name="login">
 
 
     <div class="mb-3">
         <label for="input_username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="input_username" name="input_username" aria-describedby="username_help">
+        <input type="text" class="form-control" id="input_username" name="input_username"
+               aria-describedby="username_help">
     </div>
     <div class="mb-3">
         <label for="input_password" class="form-label">Password</label>
         <input type="password" class="form-control" id="input_password" name="input_password">
-    </div>
-    <div class="mb-3">
-        <label for="input_password_check" class="form-label">Repeat Password</label>
-        <input type="password" class="form-control" id="input_password_check" name="input_password_check">
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
 
 </form>
 
-
 {% endblock %}
-
-

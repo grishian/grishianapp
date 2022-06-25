@@ -33,10 +33,17 @@
     <li class="nav-item">
         <a class="nav-link" href="{{url_for('bp_user.do_user_list')}}">User List</a>
     </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{{url_for('bp_user.do_login')}}">Login</a>
+    </li>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{{url_for('bp_user.do_user', name='test')}}">profile</a>
+    </li>
 </ul>
 {% endblock %}
 
-<div class="container mt-1 position-absolute top-0 start-50 translate-middle-x">
+<div class="container mt-5 position-absolute top-0 start-50 translate-middle-x">
     <div class="row">
         <div class="col">
             {% with messages = get_flashed_messages(with_categories=true) %}

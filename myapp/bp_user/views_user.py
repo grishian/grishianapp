@@ -1,8 +1,9 @@
+import logging
 from myapp import db
 from myapp.bp_user import bp_user
 from flask import render_template, flash, redirect, url_for, abort, request
-from myapp.bp_user.form_user import UserForm
-from myapp.bp_user.model_user import User
+from flask_login import current_user, logout_user, login_user, login_required
+from myapp.bp_user.model_user import User, only_admins
 
 
 @bp_user.route('/user/<name>')
@@ -29,7 +30,44 @@ def do_register():
     return render_template('user/register.html')
 
 
+@bp_user.route('/login', methods=['GET', 'POST'])
+def do_login():
+    if request.method == 'POST':
+        username = request.form.get('input_username')
+        password = request.form.get('input_password')
+
+        user = User.query.filter_by(username=username).first()
+        if user:
+            if not user.check_password(password):
+                flash('That combination does not exist.', 'ERROR')
+            else:
+                # in case we have another user still logged in
+                if current_user and current_user.is_authenticated:
+                    try:
+                        current_user.authenticated = False
+                        db.session.add(current_user)
+                        db.session.commit()
+                        logout_user()
+                    except Exception as e:  # pragma: no cover
+                        # if this fails we do not care, but we certainly do not want to block
+                        # someone logging in
+                        logging.info('Error during login (logout): {}'.format(e))
+
+                # now set the new user to authenticated
+                user.authenticated = True
+                db.session.add(user)
+                db.session.commit()
+
+                # do the actual login
+                login_user(user)
+        else:
+            flash('Username does not exist.', 'ERROR')
+
+    return render_template('user/login.html')
+
+
 @bp_user.route('/user_list')
+# @only_admins
 def do_user_list():
     users = User.query.all()
     return render_template('user/user_list.html', users=users)
