@@ -5,7 +5,6 @@ from myapp.bp_user.form_user import UserForm
 from myapp.bp_user.model_user import User
 
 
-
 @bp_user.route('/user/<name>')
 def do_user(name):
     return render_template('user.html', name=name)
