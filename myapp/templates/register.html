@@ -4,8 +4,28 @@
 
 <h1>Register</h1>
 
+<form method="post" name="register">
 
-<h1>User List</h1>
+
+    <div class="mb-3">
+        <label for="input_username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="input_username" name="input_username" aria-describedby="username_help">
+    </div>
+    <div class="mb-3">
+        <label for="input_password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="input_password" name="input_password">
+    </div>
+    <div class="mb-3">
+        <label for="input_password_check" class="form-label">Repeat Password</label>
+        <input type="password" class="form-control" id="input_password_check" name="input_password_check">
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
 
 
 {% endblock %}
