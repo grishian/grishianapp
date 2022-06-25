@@ -25,10 +25,10 @@
 {% block navbar%}
 <ul class="nav nav-tabs bg-light">
     <li class="nav-item">
-        <a class="nav-link" href="{{url_for('index')}}">Home</a>
+        <a class="nav-link" href="{{url_for('bp_general.index')}}">Home</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{url_for('add_user')}}">Add user</a>
+        <a class="nav-link" href="{{url_for('bp_user.add_user')}}">Add user</a>
     </li>
 </ul>
 {% endblock %}

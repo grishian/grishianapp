@@ -5,6 +5,8 @@ from myapp.bp_user.model_user import Users
 sys.dont_write_bytecode = True
 
 app = create_app()
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+app.config['SECRET_KEY'] = 'my secret key'
 
 @app.shell_context_processor
 def make_shell_context():
