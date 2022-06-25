@@ -66,8 +66,21 @@ def do_login():
     return render_template('user/login.html')
 
 
+@bp_user.route("/logout", methods=["GET"])
+@login_required
+def do_logout():
+    user = current_user
+    if user and user.is_authenticated:
+        user.authenticated = False
+        db.session.add(user)
+        db.session.commit()
+        flash('You are now logged out', 'OK')
+        logout_user()
+        return redirect(url_for('bp_general.do_home'))
+
+
 @bp_user.route('/user_list')
-# @only_admins
+@only_admins
 def do_user_list():
     users = User.query.all()
     return render_template('user/user_list.html', users=users)
