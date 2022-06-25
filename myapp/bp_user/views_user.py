@@ -16,16 +16,21 @@ def do_register():
     if request.method == 'POST':
         username = request.form.get('input_username')
         password = request.form.get('input_password')
-        # password_check = request.form.get('input_password_check')
+        password_check = request.form.get('input_password_check')
 
-        user = User()
-        user.username = username
-        user.set_password(password)
-        user.active = True
-        user.profile_type = 1
+        if password_check == password:
+            user = User()
+            user.username = username
+            user.set_password(password)
+            user.active = True
+            user.profile_type = 1
 
-        db.session.add(user)
-        db.session.commit()
+            db.session.add(user)
+            db.session.commit()
+            flash('Account created.', 'OK')
+            return redirect(url_for('bp_user.do_login'))
+        else:
+            flash('Passwords do not match.', 'ERROR')
 
     return render_template('user/register.html')
 
@@ -60,6 +65,8 @@ def do_login():
 
                 # do the actual login
                 login_user(user)
+                flash('Logged in.', 'OK')
+                return redirect(url_for('bp_user.do_user', name=current_user.username))
         else:
             flash('Username does not exist.', 'ERROR')
 
