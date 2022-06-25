@@ -12,20 +12,4 @@ def do_user(name):
 
 @bp_user.route('/register', methods=['GET', 'POST'])
 def do_register():
-    name = None
-    form = UserForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
-        if user is None:
-            user = User(username=form.username.data, email=form.email.data)
-            db.session.add(user)
-            db.session.commit()
-        name = form.username.data
-        form.username.data = ''
-        form.email.data = ''
-        flash('{} added successfully!'.format(name), 'OK')
-    our_users = User.query.order_by(User.date_added)
-
-    return render_template('register.html',
-                           form=form,
-                           our_users=our_users)
+    return render_template('register.html')

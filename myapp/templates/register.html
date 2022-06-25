@@ -2,33 +2,10 @@
 
 {% block main_content %}
 
-<h1>Register:</h1>
-<form class="mb-5" method="POST">
-    {{form.hidden_tag()}}
-
-    {{form.username.label(class="form-label")}}
-    {{form.username(class="form-control")}}
-    <br/>
-
-    {{form.email.label(class="form-label")}}
-    {{form.email(class="form-control")}}
-    <br/>
-
-    {{form.submit(class="btn btn-secondary")}}
+<h1>Register</h1>
 
 
-</form>
-
-<h1>User List:</h1>
-
-<ul class="list-group list-group-flush">
-
-    {% for our_user in our_users %}
-    <li class="list-group-item">{{ our_user.id }}-{{ our_user.username }}-{{ our_user.email }}</li>
-    {% endfor%}
-
-
-</ul>
+<h1>User List</h1>
 
 
 {% endblock %}
