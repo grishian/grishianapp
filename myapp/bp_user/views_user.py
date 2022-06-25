@@ -7,27 +7,26 @@ from myapp.bp_user.model_user import Users
 
 
 @bp_user.route('/user/<name>')
-def user(name):
+def do_user(name):
     return render_template('user.html', name=name)
 
 
-@bp_user.route('/user/add', methods=['GET', 'POST'])
-def add_user():
+@bp_user.route('/register', methods=['GET', 'POST'])
+def do_register():
     name = None
     form = UserForm()
     if form.validate_on_submit():
         user = Users.query.filter_by(email=form.email.data).first()
         if user is None:
-            user = Users(name=form.name.data, email=form.email.data)
+            user = Users(name=form.username.data, email=form.email.data)
             db.session.add(user)
             db.session.commit()
-        name = form.name.data
-        form.name.data = ''
+        name = form.username.data
+        form.username.data = ''
         form.email.data = ''
-        flash('User added successfully!', 'OK')
+        flash('{} added successfully!'.format(name), 'OK')
     our_users = Users.query.order_by(Users.date_added)
 
-    return render_template('add_user.html',
+    return render_template('register.html',
                            form=form,
-                           name=name,
                            our_users=our_users)

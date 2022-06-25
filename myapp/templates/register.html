@@ -2,12 +2,12 @@
 
 {% block main_content %}
 
-<h1>User List:</h1>
-<form method="POST">
+<h1>Register:</h1>
+<form class="mb-5" method="POST">
     {{form.hidden_tag()}}
 
-    {{form.name.label(class="form-label")}}
-    {{form.name(class="form-control")}}
+    {{form.username.label(class="form-label")}}
+    {{form.username(class="form-control")}}
     <br/>
 
     {{form.email.label(class="form-label")}}
@@ -19,7 +19,7 @@
 
 </form>
 
-
+<h1>User List:</h1>
 <table class="table">
     <thead>
     <tr>
@@ -34,7 +34,7 @@
     <tr>
         <th scope="row">{{our_user.id}}</th>
         <td>{{ our_user.id }}</td>
-        <td>{{ our_user.name }}</td>
+        <td>{{ our_user.username }}</td>
         <td>{{ our_user.email }}</td>
     </tr>
     {% endfor%}
