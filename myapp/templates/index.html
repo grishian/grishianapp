@@ -26,12 +26,12 @@
 {% block navbar%}
 <ul class="nav nav-tabs bg-light">
     <li class="nav-item">
-        <a class="nav-link" href="{{url_for('bp_general.do_home')}}">Home <i class="bi bi-house-door"></i></a>
+        <a class="nav-link" href="{{url_for('bp_general.do_home')}}">Home</a>
     </li>
 
     {% if current_user.is_authenticated %}
     <li class="nav-item">
-        <a class="nav-link" href="{{url_for('bp_user.do_user', name='test')}}">Profile <i class="bi bi-person"></i></a>
+        <a class="nav-link" href="{{url_for('bp_user.do_user', name='test')}}">Profile</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{url_for('bp_user.do_logout')}}">Logout <i class="bi bi-box-arrow-right"></i></a>
