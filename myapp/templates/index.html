@@ -31,7 +31,7 @@
 
     {% if current_user.is_authenticated %}
     <li class="nav-item">
-        <a class="nav-link" href="{{url_for('bp_user.do_user', name='test')}}">Profiel</a>
+        <a class="nav-link" href="{{url_for('bp_user.do_user', name=current_user.username)}}">Profiel</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{url_for('bp_user.do_logout')}}">Log uit <i class="bi bi-box-arrow-right"></i></a>
