@@ -31,23 +31,23 @@
 
     {% if current_user.is_authenticated %}
     <li class="nav-item">
-        <a class="nav-link" href="{{url_for('bp_user.do_user', name='test')}}">Profile</a>
+        <a class="nav-link" href="{{url_for('bp_user.do_user', name='test')}}">Profiel</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{url_for('bp_user.do_logout')}}">Logout <i class="bi bi-box-arrow-right"></i></a>
+        <a class="nav-link" href="{{url_for('bp_user.do_logout')}}">Log uit <i class="bi bi-box-arrow-right"></i></a>
     </li>
     {% else %}
     <li class="nav-item">
-        <a class="nav-link" href="{{url_for('bp_user.do_register')}}">Register <i class="bi bi-pen"></i></a>
+        <a class="nav-link" href="{{url_for('bp_user.do_register')}}">Registreer <i class="bi bi-pen"></i></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{url_for('bp_user.do_login')}}">Login <i class="bi bi-box-arrow-in-left"></i></a>
+        <a class="nav-link" href="{{url_for('bp_user.do_login')}}">Log in <i class="bi bi-box-arrow-in-left"></i></a>
     </li>
     {% endif %}
 
     {% if current_user.is_admin %}
     <li class="nav-item">
-        <a class="nav-link" href="{{url_for('bp_user.do_user_list')}}">User List</a>
+        <a class="nav-link" href="{{url_for('bp_user.do_user_list')}}">Gebruiker lijst</a>
     </li>
     {% endif %}
 </ul>
