@@ -2,29 +2,29 @@
 
 {% block main_content %}
 
-<h1>Register</h1>
+<h1>Registreren</h1>
 
 <form method="post" name="register">
 
 
     <div class="mb-3">
-        <label for="input_username" class="form-label">Username</label>
+        <label for="input_username" class="form-label">Gebruikersnaam</label>
         <input type="text" class="form-control" id="input_username" name="input_username" aria-describedby="username_help">
     </div>
     <div class="mb-3">
-        <label for="input_password" class="form-label">Password</label>
+        <label for="input_password" class="form-label">Wachtwoord</label>
         <input type="password" class="form-control" id="input_password" name="input_password">
     </div>
     <div class="mb-3">
-        <label for="input_password_check" class="form-label">Repeat Password</label>
+        <label for="input_password_check" class="form-label">Herhaal Wachtwoord</label>
         <input type="password" class="form-control" id="input_password_check" name="input_password_check">
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Geef in</button>
 
 </form>
 
-<p class="mt-3">Already registered? Click <a href="{{url_for('bp_user.do_login')}}">here</a> to login.</p>
+<p class="mt-3">Al geregistreerd? Klik <a href="{{url_for('bp_user.do_login')}}">hier</a> om in te loggen.</p>
 
 
 {% endblock %}
