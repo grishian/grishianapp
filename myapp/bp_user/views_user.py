@@ -86,6 +86,13 @@ def do_logout():
         return redirect(url_for('bp_general.do_home'))
 
 
+@bp_user.route("/supremacy")
+@login_required
+def do_supremacy():
+
+    return render_template('supremacy/supremacy_home.html')
+
+
 @bp_user.route('/user_list')
 @only_admins
 def do_user_list():
