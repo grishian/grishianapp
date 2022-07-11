@@ -1,4 +1,5 @@
 {% extends 'index.html' %}
+{% from 'macros/ranks.html' import get_rank with context %}
 
 {% block main_content %}
 
@@ -15,24 +16,11 @@
     {% for user in users%}
 
 
-    {% if user.profile_type == 0 %}
-    {% set rank = 'Admin' %}
-    {% set rank_color = 'red' %}
-    {% elif user.profile_type == 1 %}
-    {% set rank = '' %}
-    {% elif user.profile_type == 2 %}
-    {% set rank = 'Gebruiker+' %}
-    {% set rank_color = 'steelblue' %}
-    {% elif user.profile_type == 3 %}
-    {% set rank = 'Moderator' %}
-    {% set rank_color = 'darkred' %}
-    {% endif %}
-
     <tr>
         <th scope="row">{{user.id}}</th>
         <td>{{user.username}}</td>
         <td>{{user.active}}</td>
-        <td><span style="color: {{rank_color}}">{{rank}}</span></td>
+        <td>{{ get_rank(user) }}</td>
     </tr>
     {% endfor %}
     </tbody>

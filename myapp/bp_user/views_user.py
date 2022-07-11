@@ -8,7 +8,7 @@ from myapp.bp_user.model_user import User, only_admins
 
 @bp_user.route('/user/<name>')
 def do_user(name):
-    return render_template('user/user.html', name=name)
+    return render_template('user/profile.html', name=name)
 
 
 @bp_user.route('/register', methods=['GET', 'POST'])

@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% from 'macros/ranks.html' import get_rank with context %}
+
+{% block main_content %}
+
+
+<h1>{{ current_user.username }} {{ get_rank(current_user) }}</h1>
+
+<h3>Mijn opties</h3>
+<div class="list-group">
+    <a href="{{url_for('bp_user.do_supremacy')}}" class="list-group-item list-group-item-action disabled">Supremacy 1914</a>
+    <a href="https://thepiratebay10.org/" target="_blank" class="list-group-item list-group-item-action "><i class="bi bi-film"></i> Pirate bay</a>
+    <a href="https://yts-subs.com/" target="_blank" class="list-group-item list-group-item-action"><i class="bi bi-card-text"></i> Ondertitteling 1.</a>
+    <a href="https://yifysubtitles.org/" target="_blank" class="list-group-item list-group-item-action"><i class="bi bi-card-text"></i> Ondertitteling 2.</a>
+    <a href="https://yifysubtitles.ws/" target="_blank" class="list-group-item list-group-item-action"><i class="bi bi-card-text"></i> Ondertitteling 3.</a>
+    <a class="list-group-item list-group-item-action disabled">Coming soon</a>
+    <a class="list-group-item list-group-item-action disabled">Coming soon</a>
+    <a class="list-group-item list-group-item-action disabled">Coming soon</a>
+</div>
+
+
+{% endblock %}
