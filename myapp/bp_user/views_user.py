@@ -7,8 +7,8 @@ from myapp.bp_user.model_user import User, only_admins
 
 
 @bp_user.route('/user/<name>')
-def do_user(name):
-    return render_template('user/profile.html', name=name)
+def do_profile(name):
+    return render_template('user/profile.html', name=name, title='Profiel', scroll='scroll')
 
 
 @bp_user.route('/register', methods=['GET', 'POST'])
@@ -32,7 +32,7 @@ def do_register():
         else:
             flash('Passwords do not match.', 'ERROR')
 
-    return render_template('user/register.html')
+    return render_template('user/register.html', title='Registreer')
 
 
 @bp_user.route('/login', methods=['GET', 'POST'])
@@ -66,11 +66,11 @@ def do_login():
                 # do the actual login
                 login_user(user)
                 flash('Logged in.', 'OK')
-                return redirect(url_for('bp_user.do_user', name=current_user.username))
+                return redirect(url_for('bp_user.do_profile', name=current_user.username))
         else:
             flash('Username does not exist.', 'ERROR')
 
-    return render_template('user/login.html')
+    return render_template('user/login.html', title='Log-in')
 
 
 @bp_user.route("/logout", methods=["GET"])
@@ -86,15 +86,41 @@ def do_logout():
         return redirect(url_for('bp_general.do_home'))
 
 
-@bp_user.route("/supremacy")
-@login_required
-def do_supremacy():
-
-    return render_template('supremacy/supremacy_home.html')
-
 
 @bp_user.route('/user_list')
 @only_admins
 def do_user_list():
     users = User.query.all()
-    return render_template('user/user_list.html', users=users)
+    return render_template('admin/user_list.html', users=users, title='Gebruiker Lijst')
+
+
+@bp_user.route('/tools')
+@only_admins
+def do_tools():
+    return render_template('admin/tools.html', title='Tools')
+
+
+@bp_user.route('/add_user', methods=['GET', 'POST'])
+@only_admins
+def do_add_user():
+    if request.method == 'POST':
+        username = request.form.get('input_username')
+        password = request.form.get('input_password')
+        password_check = request.form.get('input_password_check')
+        rank = request.form.get('input_rank')
+
+        if password_check == password:
+            user = User()
+            user.username = username
+            user.set_password(password)
+            user.active = True
+            user.profile_type = rank
+
+            db.session.add(user)
+            db.session.commit()
+            flash('Gebruiker aangemaakt.', 'OK')
+            return redirect(url_for('bp_user.do_user_list'))
+        else:
+            flash('Wachtwoord komt niet overeen.', 'ERROR')
+
+    return render_template('admin/add_user.html', title='Gebruiker toevoegen')

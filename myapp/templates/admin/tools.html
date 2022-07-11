@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block main_content %}
+<h1>Tools</h1>
+
+<div class="list-group">
+    <a href="{{url_for('bp_user.do_user_list')}}" class="list-group-item list-group-item-action">Gebruiker lijst</a>
+    <a href="{{url_for('bp_user.do_add_user')}}" class="list-group-item list-group-item-action">Voeg gebruiker toe</a>
+    <a href="#" class="list-group-item list-group-item-action disabled">Pas gebruiker aan</a>
+    <a href="#" class="list-group-item list-group-item-action disabled">A link item</a>
+</div>
+
+
+{% endblock %}

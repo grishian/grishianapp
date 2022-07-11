@@ -6,7 +6,8 @@
 {% set rank = 'Admin' %}
 {% set rank_color = 'red' %}
 {% elif user.profile_type == 1 %}
-{% set rank = '' %}
+{% set rank = 'Gebruiker' %}
+{% set rank_color = '#68c4fb' %}
 {% elif user.profile_type == 2 %}
 {% set rank = 'Gebruiker+' %}
 {% set rank_color = 'steelblue' %}

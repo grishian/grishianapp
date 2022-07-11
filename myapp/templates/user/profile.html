@@ -7,15 +7,72 @@
 <h1>{{ current_user.username }} {{ get_rank(current_user) }}</h1>
 
 <h3>Mijn opties</h3>
-<div class="list-group">
-    <a href="{{url_for('bp_user.do_supremacy')}}" class="list-group-item list-group-item-action disabled">Supremacy 1914</a>
-    <a href="https://thepiratebay10.org/" target="_blank" class="list-group-item list-group-item-action "><i class="bi bi-film"></i> Pirate bay</a>
-    <a href="https://yts-subs.com/" target="_blank" class="list-group-item list-group-item-action"><i class="bi bi-card-text"></i> Ondertitteling 1.</a>
-    <a href="https://yifysubtitles.org/" target="_blank" class="list-group-item list-group-item-action"><i class="bi bi-card-text"></i> Ondertitteling 2.</a>
-    <a href="https://yifysubtitles.ws/" target="_blank" class="list-group-item list-group-item-action"><i class="bi bi-card-text"></i> Ondertitteling 3.</a>
-    <a class="list-group-item list-group-item-action disabled">Coming soon</a>
-    <a class="list-group-item list-group-item-action disabled">Coming soon</a>
-    <a class="list-group-item list-group-item-action disabled">Coming soon</a>
+<div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                    aria-controls="panelsStayOpen-collapseOne">
+                Snel kijken
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+             aria-labelledby="panelsStayOpen-headingOne">
+            <div class="accordion-body">
+                <div class="list-group">
+                    <a href="https://www.youtube.com/" target="_blank"
+                       class="list-group-item list-group-item-action "><i
+                            class="bi bi-youtube"></i> Youtube</a>
+                    <a href="https://gogoanime.lu/" target="_blank" class="list-group-item list-group-item-action "><i
+                            class="bi bi-google"></i> Gogoanime</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseTwo">
+                Downloaden
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+             aria-labelledby="panelsStayOpen-headingTwo">
+            <div class="accordion-body">
+                <div class="list-group">
+                    <a href="https://thepiratebay10.org/" target="_blank"
+                       class="list-group-item list-group-item-action "><i
+                            class="bi bi-incognito"></i> Pirate bay</a>
+                    <a href="https://yts-subs.com/" target="_blank" class="list-group-item list-group-item-action"><i
+                            class="bi bi-card-text"></i> Ondertitteling 1.</a>
+                    <a href="https://yifysubtitles.org/" target="_blank" class="list-group-item list-group-item-action"><i
+                            class="bi bi-card-text"></i> Ondertitteling 2.</a>
+                    <a href="https://yifysubtitles.ws/" target="_blank"
+                       class="list-group-item list-group-item-action"><i
+                            class="bi bi-card-text"></i> Ondertitteling 3.</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+            <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseThree">
+                Extra
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+             aria-labelledby="panelsStayOpen-headingThree">
+            <div class="accordion-body">
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action disabled"><i class="bi bi-binoculars"></i>
+                        Geavanceerd zoeken</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 

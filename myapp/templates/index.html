@@ -3,6 +3,11 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+
+    {% block title %}
+    <title>{{title}}</title>
+    {% endblock %}
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS/ AdminLTE CSS/ Bootstrap icons -->
@@ -15,6 +20,10 @@
 </head>
 
 <style>
+    html {
+        overflow-y: {{scroll}};
+    }
+
     body {
         background-color: #e9eef2;
     }
@@ -31,7 +40,7 @@
 
     {% if current_user.is_authenticated %}
     <li class="nav-item">
-        <a class="nav-link" href="{{url_for('bp_user.do_user', name=current_user.username)}}">Profiel</a>
+        <a class="nav-link" href="{{url_for('bp_user.do_profile', name=current_user.username)}}">Profiel</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{url_for('bp_user.do_logout')}}">Log uit <i class="bi bi-box-arrow-right"></i></a>
@@ -47,7 +56,7 @@
 
     {% if current_user.is_admin %}
     <li class="nav-item">
-        <a class="nav-link" href="{{url_for('bp_user.do_user_list')}}">Gebruiker lijst</a>
+        <a class="nav-link" href="{{url_for('bp_user.do_tools')}}">Tools</a>
     </li>
     {% endif %}
 </ul>
@@ -72,7 +81,7 @@
 </div>
 
 
-<div class="shadow p-3 my-5 bg-body rounded container">
+<div class="shadow p-3 my-5 bg-body rounded container position-relative">
 
     {% block main_content %}
 
