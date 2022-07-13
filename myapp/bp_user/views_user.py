@@ -4,6 +4,7 @@ from myapp.bp_user import bp_user
 from flask import render_template, flash, redirect, url_for, abort, request
 from flask_login import current_user, logout_user, login_user, login_required
 from myapp.bp_user.model_user import User, only_admins
+from sqlalchemy import desc, asc
 
 
 @bp_user.route('/user/<name>')
@@ -86,11 +87,10 @@ def do_logout():
         return redirect(url_for('bp_general.do_home'))
 
 
-
 @bp_user.route('/user_list')
 @only_admins
 def do_user_list():
-    users = User.query.all()
+    users = User.query.order_by(asc(User.id)).all()
     return render_template('admin/user_list.html', users=users, title='Gebruiker Lijst')
 
 
@@ -125,11 +125,28 @@ def do_add_user():
 
     return render_template('admin/add_user.html', title='Gebruiker toevoegen')
 
+
 @bp_user.route('/change_user/<user_id>', methods=['GET', 'POST'])
 @only_admins
 def do_change_user(user_id):
     user = User.query.get(user_id)
     if request.method == 'POST':
-        pass
+        username = request.form.get('input_username')
+        password = request.form.get('input_password')
+        password_check = request.form.get('input_password_check')
+        rank = request.form.get('input_rank')
+
+        if password_check and password:
+            if password_check == password:
+                user.username = username
+                user.set_password(password)
+                user.active = True
+                user.profile_type = rank
+
+                db.session.commit()
+                flash('Gebruiker aangepast.', 'OK')
+                return redirect(url_for('bp_user.do_user_list'))
+            else:
+                flash('Wachtwoord komt niet overeen.', 'ERROR')
 
     return render_template('admin/change_user.html', title='Gebruiker aanpassen', user_id=user_id, user=user)
