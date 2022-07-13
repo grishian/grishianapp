@@ -124,3 +124,12 @@ def do_add_user():
             flash('Wachtwoord komt niet overeen.', 'ERROR')
 
     return render_template('admin/add_user.html', title='Gebruiker toevoegen')
+
+@bp_user.route('/change_user/<user_id>', methods=['GET', 'POST'])
+@only_admins
+def do_change_user(user_id):
+    user = User.query.get(user_id)
+    if request.method == 'POST':
+        pass
+
+    return render_template('admin/change_user.html', title='Gebruiker aanpassen', user_id=user_id, user=user)

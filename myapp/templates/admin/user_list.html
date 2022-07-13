@@ -3,28 +3,14 @@
 
 {% block main_content %}
 
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Gebruikersnaam</th>
-        <th scope="col">Actief</th>
-        <th scope="col">Type</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for user in users%}
 
 
-    <tr>
-        <th scope="row">{{user.id}}</th>
-        <td>{{user.username}}</td>
-        <td>{{user.active}}</td>
-        <td>{{ get_rank(user) }}</td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
+{% for user in users%}
+<div class="list-group">
+    <a href="{{ url_for('bp_user.do_change_user', user_id=user.id)}}" class="list-group-item list-group-item-action">[{{user.id}}] {{user.username}} {{ get_rank(user) }}</a>
+</div>
+{% endfor %}
+
 
 
 {% endblock %}
